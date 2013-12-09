@@ -37,4 +37,38 @@ CONTAINS
 	
 	end subroutine TDMA
 
+! ***********************************************************
+	subroutine Gauss_Seidel(aP, aN, aS, aE, aW, d, T, NIter)
+		! dummy vars
+		double precision, dimension(:,:) :: aP
+		double precision, dimension(:,:) :: aN
+		double precision, dimension(:,:) :: aS
+		double precision, dimension(:,:) :: aE
+		double precision, dimension(:,:) :: aW
+		double precision, dimension(:,:) :: d
+		double precision, dimension(:,:) :: T
+		integer :: NIter
+
+		! local vars
+		integer i, j, k
+		integer :: Nx
+		integer :: Ny
+
+		Nx = size(T,1)
+		Ny = size(T,2)
+
+
+		
+		do k = 1, NIter
+			do i=2,Nx-1
+				do j=2,Ny-1
+					T(i,j) = ( aN(i,j) * T(i,j+1) &
+							 + aS(i,j) * T(i,j-1) &
+							 + aE(i,j) * T(i+1,j) &
+							 + aW(i,j) * T(i-1,j) ) / aP(i,j)
+				enddo
+			enddo
+		enddo
+	end subroutine Gauss_Seidel
+
 end module CFD
