@@ -1,5 +1,5 @@
-GFORTRAN module version '6' created from modCFD.f90 on Mon Dec  9 03:41:27 2013
-MD5:a8278804779a572547c258adb0572062 -- If you edit this, you'll get what you deserve.
+GFORTRAN module version '6' created from modCFD.f90 on Mon Dec  9 05:05:31 2013
+MD5:22655f0df4e5cedab572dd791d100960 -- If you edit this, you'll get what you deserve.
 
 (() () () () () () () () () () () () () () () () () () () () () () () ()
 () () ())
@@ -65,8 +65,9 @@ INTEGER ()) 0 '1') ()) 0 () () () 0 0)
 0 DIMENSION DUMMY) (REAL 8 0 0 REAL ()) 0 0 () (2 0 ASSUMED_SHAPE (
 CONSTANT (INTEGER 4 0 0 INTEGER ()) 0 '1') () (CONSTANT (INTEGER 4 0 0
 INTEGER ()) 0 '1') ()) 0 () () () 0 0)
-12 'niter' '' 'niter' 4 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
-UNKNOWN 0 0 DUMMY) (INTEGER 4 0 0 INTEGER ()) 0 0 () () 0 () () () 0 0)
+12 'conv_degree' '' 'conv_degree' 4 ((VARIABLE UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN UNKNOWN 0 0 DUMMY) (REAL 4 0 0 REAL ()) 0 0 () () 0
+() () () 0 0)
 )
 
 ('cfd' 0 2 'gauss_seidel' 0 3 'tdma' 0 13)

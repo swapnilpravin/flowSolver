@@ -38,7 +38,7 @@ CONTAINS
 	end subroutine TDMA
 
 ! ***********************************************************
-	subroutine Gauss_Seidel(aP, aN, aS, aE, aW, d, T, NIter)
+	subroutine Gauss_Seidel(aP, aN, aS, aE, aW, d, T, conv_degree)
 		! dummy vars
 		double precision, dimension(:,:) :: aP
 		double precision, dimension(:,:) :: aN
@@ -47,19 +47,24 @@ CONTAINS
 		double precision, dimension(:,:) :: aW
 		double precision, dimension(:,:) :: d
 		double precision, dimension(:,:) :: T
-		integer :: NIter
+		double precision :: conc_degree
 
 		! local vars
 		integer i, j, k
 		integer :: Nx
 		integer :: Ny
+		double precision :: Max_residual
+		double precision, dimension(:,:), allocatable:: T_previous
 
 		Nx = size(T,1)
 		Ny = size(T,2)
-
-
 		
-		do k = 1, NIter
+		allocate( T_previous(Nx,Ny) )
+		T_previous = T
+
+		Max_residual = 1.0
+		k = 1
+		do while ( Max_residual > conv_degree )
 			do i=2,Nx-1
 				do j=2,Ny-1
 					T(i,j) = ( aN(i,j) * T(i,j+1) &
@@ -68,7 +73,16 @@ CONTAINS
 							 + aW(i,j) * T(i-1,j) ) / aP(i,j)
 				enddo
 			enddo
+			Max_residual = maxval( T - T_previous ) / maxval(T_previous)
+			T_previous = T
+			print *, Max_residual
+			k = k + 1
+			print *, k
 		enddo
+
+		print *, "Convergence reached in ", k, " iterations."
+
+		deallocate( T_previous )
 	end subroutine Gauss_Seidel
 
 end module CFD

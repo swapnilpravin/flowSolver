@@ -59,6 +59,7 @@ subroutine write1DArrayToFile(filename, array)
 		write(10,*) array(i)
 	enddo
 	close(10)
+	print *, filename, " written to disk."
 end subroutine write1DArrayToFile
 
 subroutine write2DArrayToFile(filename, array)
@@ -78,6 +79,7 @@ subroutine write2DArrayToFile(filename, array)
 		write(10,*) ( array(i,j), j = 1,N(2) )
 	enddo
 	close(10)
+	print *, filename, " written to disk."
 end subroutine write2DArrayToFile
 	
 

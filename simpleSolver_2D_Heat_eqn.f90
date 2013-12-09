@@ -82,9 +82,9 @@ program simpleSolver
 		enddo
 	enddo
 	
-	call Gauss_Seidel(aP, aN, aS, aE, aW, d, T, 2000)
+	call Gauss_Seidel(aP, aN, aS, aE, aW, d, T, 1E-6)
 	
 	! write T to file
-	call write2DArrayToFile("T.dat", T)
+	call write2DArrayToFile("T5.dat", T)
 end program simpleSolver
 
